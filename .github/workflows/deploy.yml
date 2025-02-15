@@ -1,9 +1,9 @@
-name: React App Deployment # name of the workflo
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - deploy-react-app # branch name
+      - main
 
 jobs:
   deploy-react-to-gh-pages:

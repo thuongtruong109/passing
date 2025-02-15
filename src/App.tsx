@@ -5,7 +5,7 @@ function App() {
   return (
     <form id="signup-form" className="flow" onSubmit={() => false}>
       <div className="input-wrapper">
-        <label htmlFor="new-password">🔑 Password checker</label>
+        <label htmlFor="new-password">🔑 Password Checker</label>
         <div className="password-input-wrapper">
           <input
             type="password"
