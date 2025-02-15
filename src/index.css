@@ -13,52 +13,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  place-content: center;
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: system-ui, sans-serif;
+  color: CanvasText;
+  background: Canvas;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.25rem 1rem;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: border-color 0.25s;
+  outline: none;
 }
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
@@ -89,14 +68,22 @@ button:focus-visible {
   transition: background-color 100ms ease-out;
 }
 
-password-rules[data-score="1"] .password-rules__meter :first-child,
-password-rules[data-score="2"] .password-rules__meter :nth-child(-n + 2),
-password-rules[data-score="3"] .password-rules__meter :nth-child(-n + 3),
-password-rules[data-score="4"] .password-rules__meter :nth-child(-n + 4) {
-  background-color: dodgerblue;
+.password-rules[data-score="1"] .password-rules__meter > span:first-child,
+.password-rules[data-score="2"]
+  .password-rules__meter
+  > span:nth-child(-n + 2) {
+  background-color: #ff7e7e;
+}
+.password-rules[data-score="3"] .password-rules__meter > span:nth-child(-n + 3),
+.password-rules[data-score="4"]
+  .password-rules__meter
+  > span:nth-child(-n + 4) {
+  background-color: #ffcc00;
 }
 
-password-rules[data-score="5"] .password-rules__meter :nth-child(-n + 5) {
+.password-rules[data-score="5"]
+  .password-rules__meter
+  > span:nth-child(-n + 5) {
   background-color: mediumseagreen;
 }
 
@@ -116,6 +103,11 @@ password-rules[data-score="5"] .password-rules__meter :nth-child(-n + 5) {
 .password-rules__checklist li {
   position: relative;
   list-style-type: circle;
+}
+
+.password-rules__checklist .is-match {
+  color: mediumseagreen;
+  font-weight: 600;
 }
 
 .password-rules__checklist .is-match::before {
@@ -150,13 +142,6 @@ password-rules[data-score="5"] .password-rules__meter :nth-child(-n + 5) {
   }
 }
 
-/* Base elements */
-body {
-  font-family: system-ui, sans-serif;
-  color: CanvasText;
-  background: Canvas;
-}
-
 form {
   width: min(30rem, 100% - 1rem);
   margin-inline: auto;
@@ -170,6 +155,7 @@ input {
   border: 1px solid lightgray;
   border-radius: 0.25rem;
   box-shadow: 0 2px 6px -4px rgba(0 0 0 / 0.2);
+  outline: none;
 }
 
 button {
@@ -197,21 +183,13 @@ button {
   margin-block-start: var(--flow, 1rem);
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
 .input-wrapper {
   display: grid;
   gap: 0.4rem;
 
   label {
     justify-self: start;
+    font-weight: 700;
+    font-size: 1.2rem;
   }
 }

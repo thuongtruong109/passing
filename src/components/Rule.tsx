@@ -5,12 +5,12 @@ type Rule = {
   isMatch: boolean;
 };
 
-type PasswordRulesProps = {
+type Props = {
   inputId: string;
   rules: string[];
 };
 
-const Rule: React.FC<PasswordRulesProps> = ({ inputId, rules }) => {
+const Rule: React.FC<Props> = ({ inputId, rules }: Props) => {
   const [ruleList, setRuleList] = useState<Rule[]>([]);
   const [score, setScore] = useState(0);
 
@@ -29,7 +29,7 @@ const Rule: React.FC<PasswordRulesProps> = ({ inputId, rules }) => {
       const value = (e.target as HTMLInputElement).value;
       let newScore = 0;
 
-      const updatedRules = parsedRules.map((rule, index) => {
+      const updatedRules = parsedRules.map((rule) => {
         const isMatch = rule.regex.test(value);
         if (isMatch) newScore++;
         return { ...rule, isMatch };
@@ -47,7 +47,11 @@ const Rule: React.FC<PasswordRulesProps> = ({ inputId, rules }) => {
   }, [inputId, rules]);
 
   return (
-    <div data-score={score} style={{ "--score": score } as React.CSSProperties}>
+    <div
+      className="password-rules"
+      data-score={score}
+      style={{ "--score": score } as React.CSSProperties}
+    >
       <div className="password-rules__meter">
         <span></span>
         <span></span>
