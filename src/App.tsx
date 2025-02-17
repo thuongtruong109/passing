@@ -1,6 +1,6 @@
+import React from "react";
 import Rule from "./components/Rule";
 import Gen from "./components/Gen";
-import React from "react";
 
 function App() {
   const inputId = "new-password";
@@ -14,14 +14,16 @@ function App() {
   const btnRef = React.useRef<HTMLButtonElement>(null);
 
   const onToggle = () => {
-    if (inputRef.current?.type === "password") {
-      btnRef.current?.setAttribute("aria-pressed", "true");
-      btnRef.current?.setAttribute("aria-label", "Hide password");
-      inputRef.current.type = "text";
-    } else {
-      btnRef.current?.setAttribute("aria-pressed", "false");
-      btnRef.current?.setAttribute("aria-label", "Show password");
-      inputRef.current.type = "password";
+    if (inputRef.current && btnRef.current) {
+      if (inputRef.current.type === "password") {
+        btnRef.current.setAttribute("aria-pressed", "true");
+        btnRef.current.setAttribute("aria-label", "Hide password");
+        inputRef.current.type = "text";
+      } else {
+        btnRef.current.setAttribute("aria-pressed", "false");
+        btnRef.current.setAttribute("aria-label", "Show password");
+        inputRef.current.type = "password";
+      }
     }
   };
 
