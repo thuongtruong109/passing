@@ -6,45 +6,38 @@ type Rule = {
 };
 
 type Props = {
-  inputId: string;
-  rules: string[];
+  inputData: string;
 };
 
-const Rule: React.FC<Props> = ({ inputId, rules }: Props) => {
+const Rule: React.FC<Props> = ({ inputData }: Props) => {
   const [ruleList, setRuleList] = useState<Rule[]>([]);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
-    const input = document.getElementById(inputId) as HTMLInputElement;
-    if (!input) return;
+    if (inputData.length > 0) {
+      const parsedRules = [".{9}", ".*\\d", "[\\W_]", "[a-z]", "[A-Z]"].map(
+        (rule) => ({
+          regex: new RegExp(rule.trim()),
+          isMatch: false,
+        })
+      );
 
-    const parsedRules = rules.map((rule) => ({
-      regex: new RegExp(rule.trim()),
-      isMatch: false,
-    }));
+      setRuleList(parsedRules);
 
-    setRuleList(parsedRules);
-
-    const handleInput = (e: Event) => {
-      const value = (e.target as HTMLInputElement).value;
       let newScore = 0;
 
       const updatedRules = parsedRules.map((rule) => {
-        const isMatch = rule.regex.test(value);
+        const isMatch = rule.regex.test(inputData);
         if (isMatch) newScore++;
         return { ...rule, isMatch };
       });
 
       setRuleList(updatedRules);
       setScore(newScore);
-    };
-
-    input.addEventListener("input", handleInput);
-
-    return () => {
-      input.removeEventListener("input", handleInput);
-    };
-  }, [inputId, rules]);
+    } else {
+      setScore(0);
+    }
+  }, [inputData]);
 
   return (
     <div

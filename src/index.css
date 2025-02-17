@@ -27,7 +27,7 @@ body {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -57,7 +57,7 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  max-inline-size: 10rem;
+  max-inline-size: 15rem;
 }
 
 .password-rules__meter > :where(span) {
@@ -92,7 +92,9 @@ button:hover {
   counter-reset: score var(--score, 0) total var(--total, 5);
   content: counter(score) "/" counter(total);
   font-feature-settings: "tnum";
-  font-size: 0.8em;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-left: 0.5rem;
 }
 
 .password-rules__checklist {
@@ -119,18 +121,14 @@ button:hover {
 }
 
 .password-input-wrapper {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .password-input-wrapper button {
   display: grid;
   place-items: center;
-}
-
-.password-input-wrapper button svg:last-of-type {
-  display: none;
+  margin-left: 0.5rem;
 }
 
 .password-input-wrapper button[aria-pressed="true"] {
@@ -142,13 +140,21 @@ button:hover {
   }
 }
 
-form {
-  width: min(30rem, 100% - 1rem);
+.password-input-wrapper button[aria-pressed="false"] {
+  svg:first-of-type {
+    display: block;
+  }
+  svg:last-of-type {
+    display: none;
+  }
+}
+
+.form {
   margin-inline: auto;
   margin-block: 4rem;
 }
 
-input {
+.form input {
   box-sizing: border-box;
   padding-inline: 0.5rem;
   width: 100%;
@@ -178,7 +184,7 @@ button {
   box-shadow: 0 2px 6px -4px rgba(0 0 0 / 0.2);
 }
 
-.flow > * + * {
+.form > * + * {
   margin-block-start: var(--flow, 1rem);
 }
 

@@ -1,5 +1,11 @@
 # Password Checker
 
+> Check the strength and auto generate a password
+
+![Deploy status](https://img.shields.io/github/actions/workflow/status/thuongtruong109/passing/deploy.yml)
+[![Tech](https://img.shields.io/badge/built_with-react-blue)](https://react.dev)
+[![Demo](https://img.shields.io/badge/demo-live)](https://thuongtruong109.github.io/passing/)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
